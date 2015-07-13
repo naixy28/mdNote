@@ -20,7 +20,7 @@
 	c3=Class.forName("com.reflect.Foo");
 ```
 #### 通过Class类的实例获取类的实例
-```
+```java
 	Foo foo = null;
         try {
             foo = (Foo)c1.newInstance();//要有无参数的构造方法
