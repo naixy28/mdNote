@@ -112,6 +112,7 @@ function(item,index,array){}
 * 缩小方法
   1. `reduce()`，迭代前两项，返回一个结果，取其与下一个项继续迭代,缩小规模到1为止
   2. `reduceRight()`，反向
+
 **回调函数的参数**
 ```javascript
 function(prev,cur,index,array){}
