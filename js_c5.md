@@ -137,3 +137,43 @@ var someDate = new Date('May 25,2004');
 var y2k = new Date(Date.UTC(2000,0)); //GMT时间2000年1月0时
 var allFives = new Date(Date.UTC(2005 , 4 ,5 ,17 ,55 ,55)); //GMT时间2005年5月5日下午5点55分55秒
 ```
+### `RegExp`类型
+* 三种模式
+  1. g：全局模式，不会在匹配到第一次之后停止匹配
+  2. i：不区分大小写
+  3. m：多行模式，到一行末尾后继续查找
+* 定义正则表达式的两种方法
+  1. 字面量形式
+  ```javascript
+  var pattern  = /[bc]at/i
+  ```
+  2. 构造函数
+  ```javscript
+  var pattern = new RegExp('[bc]at','i')
+  ```
+  使用构造函数时有时会需要**双重转义**，将字符串转义成字面量形式  
+  字面量形式**始终共享同一个RegExp实例**，构造函数形式每次`new`都会新建实例
+* 实例属性
+  <table>
+  <tr><th>属性名</th><th>含义</th></tr>
+  <tr><td>global</td><td>布尔类型，是否设置了g标志</td></tr>
+<tr><td>ignoreCase</td><td>同上，i标志</td></tr>
+<tr><td>multiline</td><td>同上，m标志</td></tr>
+<tr><td>lasrIndex</td><td>开始搜索下一个匹配项的起始位置</td></tr>
+<tr><td>source</td><td>按照字面量形式输出正则的字符串</td></tr>
+  </table>
+* `exec()`方法  
+  * 专门为捕获组设计，返回**包含第一个匹配项的数组或null**，包含额外的index和input属性，分别表示匹配项的位置和被匹配的字符串  
+  * 数组的第一项是与整个模式匹配的字符串，其他项是与捕获组匹配的项
+  * 设置了`g`模式后，**==多次调用exec()会**继续查找新匹配项**
+  ```javascript
+  var text = "cat,bat,sat,fat";
+  var pattern = /.at/g;
+  var matches = pattern.exec(text);
+  alert(matches.index); //0
+  alert(matches[0]); //cat
+  ```
+* `test()`方法
+  返回**布尔类型**，判断是否存在匹配
+* 构造函数属性
+  直接用`RegExp.property`调用，每个属性都有长属性明与对应的短属性名
