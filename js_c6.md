@@ -355,4 +355,7 @@ SubType.prototype.sayAge= function(){
 
 
 ```
-![test](http://ww4.sinaimg.cn/bmiddle/945360efjw1evwjpe411xj202902fq2r.jpg)
+![test](http://ww4.sinaimg.cn/mw690/86444fb9gw1evxh5vav1rj20it0aa758.jpg)
+试着画了个图表示寄生组合式继承，可以看出`SubType`的原型对象因为不是调用`SuperType`的构造函数得到所以没有多余属性（`name`和`colors`）
+![test](http://ww2.sinaimg.cn/mw690/86444fb9gw1evxhapyhstj20by04g74c.jpg)
+上图为书中的组合继承示意图
