@@ -109,3 +109,43 @@ function createFunction(){
   }
 }
 ```
+### `this`对象
+* `this`对象在**运行时**基于函数的执行环境绑定的
+* 匿名函数的执行环境具有**全局性**
+* 下面出现的情况同样适用于`arguments`
+```javscript
+var name = 'the window';
+
+var object = {
+  name : 'my obj',
+  
+  getNameFunc : function(){
+    return function(){
+      return this.name;
+    };
+  };
+}
+
+alert(object.getNameFunc()()); // the window 
+// 匿名函数的this具有全局性，且根据作用域链只会搜索到本身的活动对象的this
+
+// 改写
+
+var object{
+  ...
+  getNameFunc : function(){
+    var that = this;
+    return function(){
+      return that.name;
+    };
+  };
+}
+
+// my obj 
+// 使用that变量保存this，返回的闭包根据作用域链找到了外部函数活动对象中的that
+```
+### 内存泄露
+ie9根据引用数判断是否需要回收垃圾，闭包若引用了外部函数中的如`html`元素时，由于html元素不被销毁会导致闭包占用的内存不被回收，要注意用`null`来处理
+
+### 模仿块级作用域
+
