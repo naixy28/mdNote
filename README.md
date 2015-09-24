@@ -7,3 +7,4 @@ js高级语言程序设计笔记连载中
 * [第五章 引用类型](https://github.com/naixy28/mdNote/blob/master/js_c5.md)
 * [第六章 面向对象程序设计](https://github.com/naixy28/mdNote/blob/master/js_c6.md)
 * [第七章 函数表达式](https://github.com/naixy28/mdNote/blob/master/js_c7.md)
+* [第八章 BOM](https://github.com/naixy28/mdNote/blob/master/js_c8.md)
