@@ -113,7 +113,7 @@ function createFunction(){
 * `this`对象在**运行时**基于函数的执行环境绑定的
 * 匿名函数的执行环境具有**全局性**
 * 下面出现的情况同样适用于`arguments`
-```javscript
+```javascript
 var name = 'the window';
 
 var object = {
@@ -148,4 +148,45 @@ var object{
 ie9根据引用数判断是否需要回收垃圾，闭包若引用了外部函数中的如`html`元素时，由于html元素不被销毁会导致闭包占用的内存不被回收，要注意用`null`来处理
 
 ### 模仿块级作用域
+* js中没有块级作用域，块语句中的变量其实是``在函数中定义``的。（如if for之流则为块级）
+* 重复声明同一个变量在js中会被忽略，但``重复声明时的赋值操作还是会执行``的
+* 使用匿名函数立即执行的方式模仿块级语句
+```javascript
+(function(){
+  //块级作用域
+})();
 
+// 需要注意，function开头的语句被认定为函数声明的开始，不能直接跟括号，下面给出反例
+
+function(){
+  //块级作用域
+}();
+
+// 本质上是通过括号将函数声明变为函数表达式
+```
+* 常用于全局作用域中的函数外部，防止在全局中添加过多变量与函数导致冲突
+
+### 私有变量、静态私有变量、模块模式、增强的模块模式
+没怎么看懂它的意义..记一段模块模式里的单例模式的代码好了
+```javascript
+var application = function(){
+  // 私有变量和函数
+  var components = new Array();
+  // 初始化
+  components.push(new BaseComponet());
+  
+  //公共
+  return {
+    getComponentCount : function(){
+      return components.length;
+    },
+    
+    registerComponent : function(component){
+      if ( typeof component == 'object' ){
+        component.push(component);
+      }
+    }
+  };
+}
+// 单例模式常用于管理应用级的信息，此处返回的第一个函数记录了注册组件的数目，后者用于注册新组建
+```
