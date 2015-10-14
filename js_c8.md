@@ -128,3 +128,55 @@ window.find();
 ```
 
 ### `location`对象
+* `window.location`与`document.location`应用的是同一个对象
+* 包含属性有`hash host hostname href pathname port protocol search`
+* 位置操作 以下三者等价，作用是打开新的url并在历史记录中生成记录
+```javascript
+location.assign('http://www.xxx.com');
+window.location = 'http://www.xxx.com';
+location.href = 'http://www.xxx.com';
+```
+* 可以修改属性实现部分修改url，修改的操作会加入历史记录，即点击后退可以回到修改前的页面
+* 使用`replace()`方法避免上一点
+```javascript
+location.replace('new url');
+```
+* `reload()`方法，重新加载当前页面，当然应该放在代码最后执行
+```javascript
+location.reload(); // 重新加载（有可能从缓存中加载）
+location.reload(true); // 重新加载（从服务器重新加载）
+```
+
+### `navigator`对象
+* 代表浏览器的对象，有一列表的属性
+* 使用`navigator.plugins`检测插件（非ie）
+* 注册处理程序，参数分别为 要处理的mine类型，处理该mine类型的url，应用程序名字
+```javascript
+navigator.registerContentHandler('application/rss+xml','http://www.somereader.com?feed=%s','some reader');
+
+```
+
+### `screen`对象
+* 被称为“没什么作用的对象”的存在，主要用来看窗口外部的显示器信息
+```javascript
+//调整浏览器大小
+window.resizeTo(screen.availWidth,screen.availHeight);
+```
+
+### `history`对象
+* 保存着上网记录，是window对象的属性，无法直接访问到url
+* `go()`方法，传入正负数，代表前进后退，传入字符串，跳转到最近的包含此字符串的页面
+* 通过`length`属性判断用户是否一开始就打开了页面
+```javascript
+history.go(1);
+
+history.go('xxx');
+
+// 简写方法
+history.back();
+history.forward();
+
+//length
+if (history.length == 0) //这是用户打开窗口后的第一个页面
+
+```
