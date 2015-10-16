@@ -60,3 +60,87 @@ var shallowList = myList.cloneNode(false); //浅复制，只复制自己
 ```
 
 ### `Document`类型
+* document对象是`HTMLDocument`的一个实例（继承自Document类型），表示整个html页面，是window对象的唯一属性，nodeType为9，nodeName为`#document`
+```javascript
+//一些属性方法
+document.documentElement; //<html>的引用
+document.body;
+document.doctype;
+
+document.title; //标题
+
+//网页请求相关
+document.URL; //返回url
+document.domain; //返回域名，能稍作设置
+document.referrer; //返回可能存在的之前的页面地址
+
+//查找元素的方法
+document.getElementById();
+document.getElementsByTagName();
+document.getElementsByName();
+
+//特殊集合
+document.anchors; //<a>的集合
+document.applets; //<applet>的集合
+document.forms; //<form>的集合
+document.images; //<img>的集合
+document.links; //<a href='...'>的集合
+
+//一致性检测，很多特性
+document.implenmentation.hasFeature('XML','1.0');
+
+//文档写入
+document.write(); //文档加载时使用没问题，加载完使用会使文档重写
+document.writeln();
+document.open(); //用于在文档加载完打开关闭网页输出流
+document.close();
+
+```
+
+### `Element`类型
+* 最常用的类型
+	* nodeType为1
+	* nodeName为标签名
+	* nodeValue为null
+	* parentNode可能是Document或Element
+	* 子节点可能是各种
+* 使用`tagNeme`测试的时候注意都是大写，使用toLowerCase()
+* HTML元素，由`HTMLElemrnt`类型或其子类型表示，有标准属性：`id title lang dir className`
+* `HTMLElemrnt`类型或其子类型表示，有标准属性：子类型，也就是正常用的标签
+```javascript
+//操作特性的方法
+div.getAttribute('id'); //对任何属性可用
+div.id; //非自定义的属性可以这样调用
+
+div.setAttribute('id','something');
+div.id = 'something';
+
+div.removeAttribute('class');
+
+//创建元素
+document.createElement('div');
+```
+
+* 元素的子节点
+```javascript
+//对于下面代码
+<ul id ='myList'>
+	<li>item</li>
+	<li>item</li>
+	<li>item</li>
+</ul>
+
+//对ie来说，childNodes有三个，对其他浏览器，有7个元素，其中有4个空白的文本节点表示文件之间的空白符
+
+//判断节点类型，不操作文本节点
+for(var i =0 , len = element.childNodes.length ; i< len; i++){
+	if(element.childNodes[i].nodeType == 1){
+		//执行某操作
+	}
+}
+
+//还可以
+ul.getElementsByTagName('li'); //返回的可能不只是直接子元素
+```
+
+### `Text`类型
