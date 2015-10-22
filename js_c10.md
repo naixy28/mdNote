@@ -144,3 +144,80 @@ ul.getElementsByTagName('li'); //返回的可能不只是直接子元素
 ```
 
 ### `Text`类型
+* nodeType为3，nodeName为`#text`，nodeValue为所含文本，parentNode是一个`Element`，无子节点
+```javascript
+var element = document.createElement('div');
+element.className = 'message';
+
+var textNode = document.createTextNode('Hello world');
+element.appendChild(textNode);
+
+var anotherTextNode = document.createTextNode('xxx');
+element.appendChild(anotherTextNode);
+
+document.body.appendChild(element);
+```
+* 常用技术，分割文本节点
+```javascript
+var textNode = document.createTextNode('Hello world!');
+element.appendChild(textNode);
+
+document.body.appendChild(element);
+
+var newNode = element.firstChild.splitText(5);
+alert(element.firstChild.nodeValue); //Hello
+alert(newNode.nodeValue); // world!
+alert(element.childNodes.length)(2);
+```
+
+### `Comment`类型
+* nodeType 8
+* 并没什么用
+
+### `CDATASection`类型
+* nodeType 4
+* 并没什么用
+
+### `DocumentType`类型
+* nodeType 0
+* 并没什么用
+
+### `DocumentFragment`类型
+* nodeType 11
+* 可作为仓库使用，用于保存可能有用的节点
+```javascript
+var fragment = document.createDocumentFragment();
+```
+
+### `Attr`类型 
+* nodeType 11 ?
+* 常用的是`getAttribute() setAttribute() removeAttribute()`
+```javascript
+//不常用
+var attr = document.createAttribute('align');
+attr.value = 'left';
+elememt.setAttributeNode(attr);
+```
+
+
+### DOM操作
+* 动态加载脚本：即在页面加载完成后添加到页面中的脚本。兼容性问题比较大，用jQ吧
+* 动态样式：类似动态加载脚本
+
+### 操作表格
+* 相对于传统的dom操作，为表格操作增加了一些简便方法
+
+### NodeList
+* NodeList,NamedNodeMap,HTMLCollection三者都是动态更新的，始终保持最新的信息
+```javascript
+var divs = document.getElementsByTagName('div'),
+	i,
+	div;
+
+for (i =0; i<divs.length;i++){
+	div = document.createElement('div');
+	document.body.appendChild(div);
+}
+
+//以上代码由于NodeList的动态性，会无限循环
+```
