@@ -1,5 +1,7 @@
 # mdNote
-js高级语言程序设计笔记连载中
+就是用markdown写的笔记啦
+
+### js高级语言程序设计
 
 * [第二章 在HTML中使用Js](https://github.com/naixy28/mdNote/blob/master/js_c2.md)
 * [第三章 基本概念](https://github.com/naixy28/mdNote/blob/master/js_c3.md)
@@ -10,3 +12,7 @@ js高级语言程序设计笔记连载中
 * [第八章 BOM](https://github.com/naixy28/mdNote/blob/master/js_c8.md)
 * [第九章 客户端检测](https://github.com/naixy28/mdNote/blob/master/js_c9.md)
 * [第十章 DOM](https://github.com/naixy28/mdNote/blob/master/js_c10.md)
+
+### 未分类
+
+* [跨域资源共享CORS](https://github.com/naixy28/mdNote/blob/master/CORS.md)
