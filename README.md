@@ -13,6 +13,8 @@
 * [第九章 客户端检测](https://github.com/naixy28/mdNote/blob/master/js_c9.md)
 * [第十章 DOM](https://github.com/naixy28/mdNote/blob/master/js_c10.md)
 
+### ES6
+
 ### 未分类
 
 * [跨域资源共享CORS](https://github.com/naixy28/mdNote/blob/master/CORS.md)
